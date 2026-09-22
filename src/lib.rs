@@ -29,6 +29,9 @@ mod tlsf;
 mod thread_cache;
 pub mod huge;
 
+#[cfg(windows)]
+pub mod dllmain;
+
 // Re-export the C API
 pub use crate::api::*;
 
