@@ -1,0 +1,34 @@
+[package]
+name = "ferrum-alloc"
+version = "0.1.0"
+edition = "2024"
+description = "High-performance memory allocator with O(1) TLSF, thread-local arenas, and lock-free cross-thread free"
+license = "MIT OR Apache-2.0"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["std"]
+std = []
+huge_remap = []
+
+[dependencies]
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+rand = "0.8"
+
+[[bench]]
+name = "allocator_bench"
+harness = false
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[profile.test]
+panic = "abort"
+
